@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>SYNC - DENIS CUNK</title>
+    <style>
+        body { background: #000; color: #ff0000; font-family: 'Courier New', monospace; text-align: center; height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; overflow: hidden; }
+        .pairing-box { border: 1px solid #ff0000; padding: 20px; box-shadow: 0 0 15px #ff0000; background: rgba(20, 0, 0, 0.9); width: 80%; }
+        .code { font-size: 3rem; font-weight: bold; color: #fff; text-shadow: 0 0 10px #ff0000; margin: 20px 0; letter-spacing: 5px; }
+        .status-dot { height: 10px; width: 10px; background-color: #550000; border-radius: 50%; display: inline-block; margin-right: 5px; animation: blink 1s infinite; }
+        @keyframes blink { 50% { opacity: 0.3; } }
+        .info { font-size: 0.7rem; color: #666; margin-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="pairing-box">
+        <div style="font-size: 0.8rem;">SYSTEM PAIRING CODE</div>
+        <div class="code">774-921</div>
+        <div style="font-size: 0.8rem;"><span class="status-dot"></span>WAITING FOR OWNER...</div>
+    </div>
+    
+    <div class="info" id="device-info">
+        Detecting Hardware...<br>
+        Battery: Calculating...
+    </div>
+
+    <script>
+        // Simulasi narik data baterai (hanya kerja jika WebView kasih izin)
+        navigator.getBattery().then(function(battery) {
+            document.getElementById('device-info').innerHTML = 
+                "Device: Oppo F7 (Detected)<br>Battery: " + (battery.level * 100) + "%";
+        });
+    </script>
+</body>
+</html>
